@@ -4,17 +4,44 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
-- develop
+  branches:
+    include: 
+    - main
+    - develop
 
-pool:
-  vmImage: 'ubuntu-latest'
+variables:
+  buildConfiguration: 'Release'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+# Build Stage
+- stage: BuildAndTest
+  jobs:
+  - job: BuildAndTest
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    steps:
+
+    # Use .Net 5
+    - task: UseDotNet@2
+      displayName: 'Use .NET 5'
+      inputs:
+        packageType: sdk
+        version: 5.0.x
+        includePreviewVersions: true
+        installationPath: $(Agent.ToolsDirectory)/dotnet
+  
+    # Restore dependencies
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet restore'
+      inputs:
+        command: restore
+        projects: '**/*.csproj'
+
+    # Build app
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet build'
+      inputs:
+        command: build
+        projects: '**/*.csproj'
+        arguments: '--configuration $(buildConfiguration)'
