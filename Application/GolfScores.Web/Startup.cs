@@ -32,6 +32,7 @@ namespace GolfScores.Web
                 .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAdB2C"));
             services.AddRazorPages()
                 .AddMicrosoftIdentityUI();
+            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
