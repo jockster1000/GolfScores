@@ -9,7 +9,7 @@
             "type": "String"
         },
         "registrySku": {
-            "defaultValue": "Standard",
+            "defaultValue": "Basic",
             "type": "String"
         }
     },

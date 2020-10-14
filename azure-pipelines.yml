@@ -37,7 +37,7 @@ stages:
         resourceGroupName: '$(rgName)'
         location: $(location)
         csmFile: '$(System.DefaultWorkingDirectory)/**/containerRegistry-template.json'
-        overrideParameters: '-registryName "$(acrName)" -registryLocation "$(location)" -registrySku standard'
+        overrideParameters: '-registryName "$(acrName)" -registryLocation "$(location)" -registrySku basic'
 
     # Use .Net 5
     - task: UseDotNet@2
