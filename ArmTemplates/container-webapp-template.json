@@ -44,6 +44,7 @@
             },
             "properties": {
                 "name": "[parameters('webAppName')]",
+                "httpsOnly": "true",
                 "siteConfig": {
                     "appSettings": [
                         {
@@ -105,8 +106,7 @@
                 "workerSizeId": "0",
                 "reserved": true,
                 "numberOfWorkers": "1",
-                "hostingEnvironment": "",
-                "httpsOnly": "true"                
+                "hostingEnvironment": ""      
             }
         },
         {
