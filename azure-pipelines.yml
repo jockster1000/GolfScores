@@ -132,7 +132,7 @@ stages:
         resourceGroupName: '$(rgName)'
         location: '$(location)'
         csmFile: '$(Pipeline.Workspace)/**/container-webapp-template.json'
-        overrideParameters: '-webAppName $(webAppName) -hostingPlanName $(webAppName) -appInsightsLocation "$(location)" -sku "F1 Free" -registryName $(acrName) -registryLocation "$(location)" -registrySku standard -imageName $(imageName):$(Build.BuildId)'
+        overrideParameters: '-webAppName $(webAppName) -hostingPlanName $(webAppName) -appInsightsLocation "$(location)" -sku "F1 Free" -registryName $(acrName) -registryLocation "$(location)" -registrySku basic -imageName $(imageName):$(Build.BuildId)'
 
     # Deploy App Service
     - task: AzureRmWebAppDeployment@3
