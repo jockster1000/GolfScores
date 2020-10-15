@@ -11,7 +11,7 @@ trigger:
 
 variables:
   buildConfiguration: 'Release'
-  location: 'UK South'
+  location: '$(locationParam)'
   acrHostName: 'golfscoresacr.azurecr.io'
   acrName: 'golfscoresacr'
   rgName: 'golfscores-rg'
