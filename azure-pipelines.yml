@@ -13,7 +13,7 @@ variables:
   buildConfiguration: 'Release'
   location: '$(locationParam)'
   acrHostName: '$(appName)acr.azurecr.io'
-  acrName: '$(appName)-acr'
+  acrName: '$(appName)acr'
   rgName: '$(appName)-rg'
   imageName: '$(appName)-dockimg'
   webAppName: '$(appName)-web'
