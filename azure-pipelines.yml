@@ -12,12 +12,11 @@ trigger:
 variables:
   buildConfiguration: 'Release'
   location: '$(locationParam)'
-  acrHostName: 'golfscoresacr.azurecr.io'
-  acrName: 'golfscoresacr'
-  rgName: 'golfscores-rg'
-  imageName: 'golfscores'
-  webAppName: 'golfscores'
- 
+  acrHostName: '$(appName)-acr.azurecr.io'
+  acrName: '$(appName)-acr'
+  rgName: '$(appName)-rg'
+  imageName: '$(appName)-dockimg'
+  webAppName: '$(appName)-web'
 
 stages:
 
