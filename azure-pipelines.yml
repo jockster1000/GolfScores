@@ -128,8 +128,7 @@ stages:
         azureSubscription: 'AzureSC'
         scriptType: 'pscore'
         scriptLocation: 'inlineScript'
-        inlineScript: 'az servicebus namespace create --resource-group $(rgName) --name Montpellier-servicebus --location uksouth --sku Basic
-                       az servicebus queue create --resource-group $(rgName) --namespace-name Montpellier-servicebus --name ScoresQueue'
+        inlineScript: 'az servicebus namespace create --resource-group $(rgName) --name golfscores-sb --location $(location) --sku Basic'
 
     # Create or update Azure App Service
     - task: AzureResourceGroupDeployment@2
