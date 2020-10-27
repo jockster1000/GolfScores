@@ -123,6 +123,14 @@ stages:
     - download: current
       artifact: app
 
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: 'AzureSC'
+        scriptType: 'pscore'
+        scriptLocation: 'inlineScript'
+        inlineScript: 'az servicebus namespace create --resource-group $(rgName) --name Montpellier-servicebus --location uksouth --sku Basic
+                       az servicebus queue create --resource-group $(rgName) --namespace-name Montpellier-servicebus --name ScoresQueue'
+
     # Create or update Azure App Service
     - task: AzureResourceGroupDeployment@2
       displayName: 'Azure Deployment:Create Azure App Service'
