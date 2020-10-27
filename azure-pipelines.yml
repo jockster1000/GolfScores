@@ -128,7 +128,7 @@ stages:
         azureSubscription: 'AzureSC'
         scriptType: 'pscore'
         scriptLocation: 'inlineScript'
-        inlineScript: 'az servicebus namespace create --resource-group $(rgName) --name golfscores-sb --location $(location) --sku Basic'
+        inlineScript: 'az servicebus namespace create --resource-group $(rgName) --name golfscores-sb --location uksouth --sku basic'
 
     # Create or update Azure App Service
     - task: AzureResourceGroupDeployment@2
