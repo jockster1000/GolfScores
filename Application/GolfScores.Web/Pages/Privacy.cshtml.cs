@@ -19,6 +19,7 @@ namespace GolfScores.Web.Pages
 
         public void OnGet()
         {
+            _logger.LogCritical("Are major error has occured", "nothing");
         }
     }
 }
