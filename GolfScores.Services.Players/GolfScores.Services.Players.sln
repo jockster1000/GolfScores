@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GolfScores.Services.Players
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{9D230271-1603-434F-BC1F-5130C41662A2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Players", "Players", "{FF47D9C1-668A-4E61-9F06-A10EE30F2599}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GolfScores.Services.Players.UnitTests", "..\GolfScores.Services.Players.UnitTests\GolfScores.Services.Players.UnitTests.csproj", "{FE012418-3CC4-4D3E-8BA3-66577D0498EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,18 @@ Global
 		{62D8EC18-B99A-43DC-B02B-79212926F1C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62D8EC18-B99A-43DC-B02B-79212926F1C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62D8EC18-B99A-43DC-B02B-79212926F1C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE012418-3CC4-4D3E-8BA3-66577D0498EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE012418-3CC4-4D3E-8BA3-66577D0498EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE012418-3CC4-4D3E-8BA3-66577D0498EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE012418-3CC4-4D3E-8BA3-66577D0498EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{62D8EC18-B99A-43DC-B02B-79212926F1C5} = {9D230271-1603-434F-BC1F-5130C41662A2}
+		{62D8EC18-B99A-43DC-B02B-79212926F1C5} = {FF47D9C1-668A-4E61-9F06-A10EE30F2599}
+		{FF47D9C1-668A-4E61-9F06-A10EE30F2599} = {9D230271-1603-434F-BC1F-5130C41662A2}
+		{FE012418-3CC4-4D3E-8BA3-66577D0498EA} = {FF47D9C1-668A-4E61-9F06-A10EE30F2599}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6F710220-E313-424D-A4FE-A5CE6B915C7A}
