@@ -32,25 +32,32 @@ stages:
         script: 'du -a .'
 
     - task: Docker@2
-      displayName: Build the container image
       inputs:
-        repository: '$(imageRepository)'
-        command: 'build'
-        Dockerfile: $(dockerfilePath)
-        buildContext: '$(Build.SourcesDirectory)'
-        tags: '$(tag)'
-                  
-    - script: |
-        sudo docker tag $(imageRepository):$(tag) $(containerRegistry)/$(imageRepository):$(tag)
-      displayName: 'Tag container image before push'
+        containerRegistry: 'dockerregistry-dev'
+        repository: 'playerservice'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
 
-    - task: Docker@2
-      displayName: Push the image to container registry
-      inputs:
-        command: push
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
-        buildContext: $(Build.SourcesDirectory)/GolfScores
-        tags: |
-          $(tag)
+    # - task: Docker@2
+    #   displayName: Build the container image
+    #   inputs:
+    #     repository: '$(imageRepository)'
+    #     command: 'build'
+    #     Dockerfile: $(dockerfilePath)
+    #     buildContext: '$(Build.SourcesDirectory)'
+    #     tags: '$(tag)'
+                  
+    # - script: |
+    #     sudo docker tag $(imageRepository):$(tag) $(containerRegistry)/$(imageRepository):$(tag)
+    #   displayName: 'Tag container image before push'
+
+    # - task: Docker@2
+    #   displayName: Push the image to container registry
+    #   inputs:
+    #     command: push
+    #     repository: $(imageRepository)
+    #     dockerfile: $(dockerfilePath)
+    #     containerRegistry: $(dockerRegistryServiceConnection)
+    #     buildContext: $(Build.SourcesDirectory)/GolfScores
+    #     tags: |
+    #       $(tag)
