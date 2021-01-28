@@ -6,14 +6,51 @@
 trigger:
 - main
 
-pool:
-  vmImage: 'ubuntu-latest'
+variables:
+  dockerRegistryServiceConnection: 'dockerregistry-dev'
+  imageRepository: 'golfscores.players.service'
+  containerRegistry: 'golfscores.azurecr.io'
+  dockerfilePath: '../GolfScores.Services.Players/Dockerfile'
+  tag: '$(Build.BuildId)'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  vmImageName: 'ubuntu-latest'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+stages:
+
+- stage: Build
+  displayName: Build and push stage
+  jobs:  
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: 'du -a .'
+
+    - task: Docker@2
+      displayName: Build the container image
+      inputs:
+        repository: '$(imageRepository)'
+        command: 'build'
+        Dockerfile: $(dockerfilePath)
+        buildContext: '$(Build.SourcesDirectory)'
+        tags: '$(tag)'
+                  
+    - script: |
+        sudo docker tag $(imageRepository):$(tag) $(containerRegistry)/$(imageRepository):$(tag)
+      displayName: 'Tag container image before push'
+
+    - task: Docker@2
+      displayName: Push the image to container registry
+      inputs:
+        command: push
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        buildContext: $(Build.SourcesDirectory)/GolfScores
+        tags: |
+          $(tag)
