@@ -10,7 +10,7 @@ variables:
   dockerRegistryServiceConnection: 'dockerregistry-dev'
   imageRepository: 'golfscores.players.service'
   containerRegistry: 'golfscores.azurecr.io'
-  dockerfilePath: '../GolfScores.Services.Players/Dockerfile'
+  dockerfilePath: './GolfScores.Services.Players/Dockerfile'
   tag: '$(Build.BuildId)'
 
   vmImageName: 'ubuntu-latest'
