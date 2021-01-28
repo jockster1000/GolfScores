@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
-COPY ["./GolfScores.Services.Players.csproj", ""]
+COPY ["GolfScores.Services.Players.csproj", ""]
 RUN dotnet restore "./GolfScores.Services.Players.csproj"
 COPY . .
 WORKDIR "/src/."
